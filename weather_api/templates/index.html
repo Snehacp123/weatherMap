@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+</head>
+<body>
+
+<h2>Weather App</h2>
+
+<form method="post">
+    {% csrf_token %}
+    City: <input type="text" name="city" required><br><br>
+    Option:
+    <select name="option">
+        <option value="1">Get Weather</option>
+        <option value="2">Get Wind Speed</option>
+        <option value="3">Get Pressure</option>
+    </select>
+    <br><br>
+    <input type="submit" value="Submit">
+</form>
+
+
+
+{% if result %}
+    <h3>Results:</h3>
+    <ul>
+        {% for entry in result %}
+            <li>
+                {{ entry.0 }} - {{ entry.1 }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+
+</body>
+</html>
